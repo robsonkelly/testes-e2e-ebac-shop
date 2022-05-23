@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 var faker = require ('faker')
+const perfil = require('../fixtures/perfil.json')
 
 context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
     /*  Como cliente 
@@ -23,6 +24,16 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             var quantidade1 = 2
     
             cy.get('.icon-user-unfollow').click()
+            cy.fixture('perfil').then(dados =>{
+                cy.login(dados.usuario, dados.senha)
+            })
+
+
+            cy.login('aluno_ebac@teste.com','teste@teste.com')
+
+
+            
+    
             cy.get('#reg_email').type(emailFaker)
             cy.get('#reg_password').type('caderno.com')
             cy.get(':nth-child(4) > .button').click()
@@ -57,6 +68,8 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             cy.get('.input-text').clear().type(quantidade1)
             cy.get('.single_add_to_cart_button').click()
             cy.get('#cart > .dropdown-toggle').click()
+
+
             cy.get('#cart > .dropdown-menu > .widget_shopping_cart_content > .mini_cart_content > .mini_cart_inner > .mcart-border > .buttons > .checkout').click()
             cy.get('#billing_company').clear().type('CASA SÃO GERALDO')
             cy.get('#select2-billing_country-container').click().type('Brasil').get('[aria-selected="true"]').click()
@@ -70,7 +83,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             cy.get('#place_order').click() 
             
                   
-            
+            it(' testeando o git')
            
     });
 
