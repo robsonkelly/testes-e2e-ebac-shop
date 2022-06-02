@@ -35,6 +35,8 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
             
 
+            
+
 
             cy.get('#cart > .dropdown-menu > .widget_shopping_cart_content > .mini_cart_content > .mini_cart_inner > .mcart-border > .buttons > .checkout').click()
             cy.get('#billing_company').clear().type('CASA SÃO GERALDO')
