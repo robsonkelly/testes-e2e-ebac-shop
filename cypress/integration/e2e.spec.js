@@ -20,54 +20,20 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             let nomeFaker = faker.name.firstName()
             let sobrenomeFaker = faker.name.lastName ()
             let emailFaker = faker.internet.email (nomeFaker)
-            var quantidade = 3
-            var quantidade1 = 2
+           // var quantidade = 3
+            //var quantidade1 = 2
     
             cy.get('.icon-user-unfollow').click()
             cy.fixture('perfil').then(dados =>{
                 cy.login(dados.usuario, dados.senha)
             })
-
-
-            cy.login('aluno_ebac@teste.com','teste@teste.com')
+            
+           cy.visit('/')
+            cy.get('#primary-menu > .menu-item-629 > a').click()
+            cy.addprodutos ('Aero Daily Fitness Tee', 'S', 'Brown', 3)
 
 
             
-    
-            cy.get('#reg_email').type(emailFaker)
-            cy.get('#reg_password').type('caderno.com')
-            cy.get(':nth-child(4) > .button').click()
-            cy.get('.woocommerce-MyAccount-navigation-link--edit-account > a').click()
-            cy.get('#account_first_name').type ('Robsonkelly')
-            cy.get('#account_last_name').type ('Braga')
-            cy.get('.woocommerce-Button').click()
-            cy.visit('/')
-            cy.get('#primary-menu > .menu-item-629 > a').click()
-            cy.get ('[class="product-block grid"] ').contains('Aero Daily Fitness Tee').click()
-            cy.get('.button-variable-item-S').click()
-            cy.get('.button-variable-item-Brown').click()
-            cy.get('.input-text').clear().type(quantidade)
-            cy.get('.single_add_to_cart_button').click()
-            cy.get('.woocommerce-message').should ('contain',  quantidade + ' × “Aero Daily Fitness Tee” foram adicionados no seu carrinho.')
-            cy.get('.tbay-woocommerce-breadcrumb > :nth-child(5) > a').click()
-            cy.get('.post-3179 > .product-block > .block-inner > .image > .product-image > .image-hover').click()
-            cy.get('.button-variable-item-S').click()
-            cy.get('.button-variable-item-Orange').click()
-            cy.get('.input-text').clear().type(quantidade1)
-            cy.get('.single_add_to_cart_button').click()
-            cy.get('.tbay-woocommerce-breadcrumb > :nth-child(4) > a').click ()
-            cy.get('.post-2559 > .product-block > .block-inner > .image > .product-image > .image-hover').click()
-            cy.get('.button-variable-item-XS').click()
-            cy.get('.button-variable-item-Red').click()
-            cy.get('.input-text').clear().type(quantidade1)
-            cy.get('.single_add_to_cart_button').click()
-            cy.get('.tbay-woocommerce-breadcrumb > :nth-child(3) > a').click()
-            cy.get('.post-3374 > .product-block > .block-inner > .image > .product-image > .image-hover').click()
-            cy.get('.button-variable-item-34').click()
-            cy.get(':nth-child(2) > .value > .variable-items-wrapper > .variable-item').click()
-            cy.get('.input-text').clear().type(quantidade1)
-            cy.get('.single_add_to_cart_button').click()
-            cy.get('#cart > .dropdown-toggle').click()
 
 
             cy.get('#cart > .dropdown-menu > .widget_shopping_cart_content > .mini_cart_content > .mini_cart_inner > .mcart-border > .buttons > .checkout').click()
